@@ -1,0 +1,39 @@
+@if (status === 'hidden') {
+<section
+  (click)="onToggleStatus()"
+  class="grid w-full h-full min-h-[100px] rounded-lg shadow-lg cursor-pointer place-content-center active:scale-95">
+  <img
+    class="w-8 h-8 select-none"
+    src="/assets/icons/plus.svg"
+    alt="Plus Icon">
+</section>
+}@else {
+<section class="w-full h-full p-2 shadow-lg">
+  <input
+    class="w-full p-2 text-gray-800 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+    type="text"
+    placeholder="Task"
+    [(ngModel)]="task.title">
+
+  <textarea
+    class="w-full mt-2 text-gray-800 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+    placeholder="Description"
+    [(ngModel)]="task.description">
+  </textarea>
+
+  <div class="flex flex-col gap-4 tablet:flex-row">
+    <button
+      class="w-full p-2 mt-2 border rounded-lg focus:outline-none focus:ring-2"
+      type="submit"
+      (click)="onCancel()">
+      Cancel
+    </button>
+    <button
+      class="w-full p-2 mt-2 text-white bg-blue-500 border border-blue-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+      type="submit"
+      (click)="onSubmit()">
+      Add Task
+    </button>
+  </div>
+</section>
+}

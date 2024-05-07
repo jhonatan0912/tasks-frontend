@@ -1,0 +1,11 @@
+<tasks-header />
+
+<main class="w-screen min-h-screen px-5 pt-24 pb-5">
+  <section
+    class="grid grid-cols-2 gap-4 tablet:grid-cols-3 laptop:grid-cols-4 desktop:grid-cols-5 max-w-[1440px] mx-auto">
+    <app-task-form (onTask)="onTask($event)" />
+    @for (task of tasksReponse.data; track task.id) {
+    <app-task [task]="task" />
+    }
+  </section>
+</main>
