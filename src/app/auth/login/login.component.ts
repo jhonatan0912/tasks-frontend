@@ -16,8 +16,8 @@ export class LoginComponent extends ViewComponent {
   private readonly _authProxy = inject(AuthProxy);
 
   fields = new FormGroup({
-    email: new FormControl('jhonatan@gmail.com', [Validators.required, Validators.email]),
-    password: new FormControl('Jhonatan123@.', [Validators.required, Validators.pattern(StrongPasswordRegx)]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.pattern(StrongPasswordRegx)]),
   });
 
   get passwordField() {
