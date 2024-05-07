@@ -1,3 +1,3 @@
 export const environment = {
-  api: 'http://localhost:3000',
+  api: 'https://tasks-backend-production-41cc.up.railway.app',
 };
