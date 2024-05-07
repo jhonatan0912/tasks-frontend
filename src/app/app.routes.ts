@@ -15,12 +15,12 @@ export const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'auth',
+    redirectTo: 'tasks',
     pathMatch: 'full'
   },
   {
     path: '**',
-    redirectTo: 'auth',
+    redirectTo: 'tasks',
     pathMatch: 'full'
   }
 ];
