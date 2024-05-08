@@ -17,7 +17,7 @@ export class TasksHeaderComponent extends ViewComponent {
   onLogout(): void {
     this.session.logout()
       .then(() => {
-        this.navigation.forward('/');
+        this.navigation.forward('/auth/login');
       });
   }
 }

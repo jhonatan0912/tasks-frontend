@@ -16,8 +16,9 @@
     [(ngModel)]="task.title">
 
   <textarea
-    class="w-full mt-2 text-gray-800 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+    class="w-full px-2 mt-2 text-gray-800 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
     placeholder="Description"
+    maxlength="100"
     [(ngModel)]="task.description">
   </textarea>
 
