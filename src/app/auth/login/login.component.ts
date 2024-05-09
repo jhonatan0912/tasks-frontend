@@ -38,6 +38,9 @@ export class LoginComponent extends ViewComponent {
           this.session.user.set(response.data.user);
           this.session.setTokens(response.data.token, response.data.refreshToken);
           this.navigation.forward('/tasks');
+        },
+        error: (err) => {
+          this.toast.error(err.message);
         }
       });
     } else {

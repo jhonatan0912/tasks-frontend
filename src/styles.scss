@@ -3,4 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import './scss/structure'
+@import './scss/structure';
+
+/* NG TOAST*/
+@import 'ngx-toastr/toastr';

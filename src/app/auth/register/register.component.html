@@ -89,10 +89,10 @@
           </button>
 
           <a
-            (click)="onLogin()"
             class="block mt-6 text-sm font-medium leading-6 text-center select-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
             Already have an account?
-            <span class="text-indigo-600 cursor-pointer hover:scale-90">
+            <span (click)="onLogin()"
+              class="text-indigo-600 cursor-pointer hover:scale-90">
               Login
             </span>
           </a>
