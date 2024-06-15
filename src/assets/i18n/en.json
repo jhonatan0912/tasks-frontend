@@ -1,0 +1,20 @@
+{
+  "app.title": "Tasks App",
+  "login.title": "Sign in to your account",
+  "task.title": "Title",
+  "task.description": "Description",
+  "task.createdDate": "Created at",
+  "task.status": "Status",
+  "task.actions": "Actions",
+  "task.add": "Add task",
+  "task.edit": "Edit task",
+  "task.delete": "Delete task",
+  "task.save": "Save",
+  "task.cancel": "Cancel",
+  "auth.email": "Email address",
+  "auth.password": "Password",
+  "auth.login": "Sign in",
+  "auth.logout": "Sign out",
+  "auth.register": "Sign up",
+  "auth.notAccount":"Don't have an account?"
+}

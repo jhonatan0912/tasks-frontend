@@ -1,16 +1,22 @@
 <article
   class="task select-none active:scale-95 flex cursor-pointer flex-col gap-2 border-t-4 shadow-lg p-2 py-2 rounded-lg {{ task().done ? ' border-t-green-500' : 'border-t-red-500' }}">
   <p>
-    <span class="font-bold">Titulo:</span> {{ task().title }}
-  </p>
-
-  <p>
-    <span class="font-bold">Descripción:</span> {{ task().description}}
+    <span class="font-bold">
+      {{ 'task.title' | translate}}:
+    </span> {{
+    task().title }}
   </p>
 
   <p>
     <span class="font-bold">
-      Fecha de creación:
+      {{ 'task.description' | translate}}:
+    </span>
+    {{ task().description}}
+  </p>
+
+  <p>
+    <span class="font-bold">
+      {{ 'task.createdDate' | translate}}:
     </span>
     <span class="text-xs">
       {{ task().createdAt | date: 'dd/mm/YYYY hh:mm a'}}

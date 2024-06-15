@@ -1,0 +1,20 @@
+{
+  "app.title": "Aplicación de tareas",
+  "login.title": "Iniciar sesión",
+  "task.title": "Título",
+  "task.description": "Descripción",
+  "task.createdDate": "Fecha de creación",
+  "task.status": "Estado",
+  "task.actions": "Acciones",
+  "task.create": "Crear tarea",
+  "task.edit": "Editar tarea",
+  "task.delete": "Eliminar tarea",
+  "task.save": "Guardar",
+  "task.cancel": "Cancelar",
+  "auth.email": "Email",
+  "auth.password": "Contraseña",
+  "auth.login": "Iniciar sesión",
+  "auth.logout": "Cerrar sesión",
+  "auth.register": "Registrarse",
+  "auth.notAccount": "No tienes una cuenta?"
+}

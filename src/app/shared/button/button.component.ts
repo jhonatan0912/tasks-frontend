@@ -5,7 +5,6 @@ import { Component, input, output } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss']
 })
 export class ButtonComponent {
   busy = input<boolean>();

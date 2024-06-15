@@ -6,7 +6,7 @@ export const tasksGuard: CanActivateFn = (): boolean => {
   const sessionService = inject(AppSessionService);
   const navigation = inject(AppNavigationService);
 
-  if (sessionService.token || sessionService.user()) {
+  if (sessionService.user()) {
     return true;
   }
 

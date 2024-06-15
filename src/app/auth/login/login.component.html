@@ -1,10 +1,16 @@
 <main class="grid w-full h-full place-content-center">
+
+  <div (click)="languageService.onLanguage()"
+    class="absolute p-2 font-medium uppercase cursor-pointer select-none hover:bg-gray-200 hover:rounded-md top-6 right-6">
+    {{ languageService.currentLanguage }}
+  </div>
+
   <div
     class="flex flex-col justify-center w-full min-h-full px-6 py-12 rounded-lg shadow-lg lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
       <h1
         class="text-2xl font-bold leading-9 tracking-tight text-center text-gray-900 ">
-        Sign in to your account
+        {{ 'login.title' | translate }}
       </h1>
     </div>
 
@@ -13,7 +19,7 @@
         <div>
           <label for="email"
             class="block text-sm font-medium leading-6 text-gray-900">
-            Email address
+            {{ 'auth.email' | translate }}
           </label>
           <div class="mt-2">
             <input
@@ -30,7 +36,9 @@
         <div>
           <div class="flex items-center justify-between">
             <label for="password"
-              class="block text-sm font-medium leading-6 text-gray-900">Password</label>
+              class="block text-sm font-medium leading-6 text-gray-900">
+              {{ 'auth.password' | translate }}
+            </label>
           </div>
           <div class="mt-2">
             <input
@@ -48,16 +56,16 @@
           <app-button
             [busy]="busy()"
             (onAction)="onLogin()">
-            Sign in
+            {{ 'auth.login' | translate }}
           </app-button>
 
           <a
             class="block mt-6 text-sm font-medium leading-6 text-center select-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
-            Don't have an account?
+            {{ 'auth.notAccount' | translate }}
             <span
               (click)="onRegister()"
               class="text-indigo-600 cursor-pointer hover:scale-90">
-              Register
+              {{ 'auth.register' | translate }}
             </span>
           </a>
         </div>

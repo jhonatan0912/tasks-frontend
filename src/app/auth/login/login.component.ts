@@ -3,7 +3,9 @@ import { Component, inject, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ViewComponent } from '@core/inheritance';
 import { AuthProxy } from '@core/proxies';
+import { LanguageService } from '@core/services';
 import { StrongPasswordRegx } from "@core/utils";
+import { TranslateModule } from '@ngx-translate/core';
 import { ButtonComponent } from '@shared/button/button.component';
 import { finalize } from 'rxjs';
 
@@ -13,7 +15,8 @@ import { finalize } from 'rxjs';
   imports: [
     ReactiveFormsModule,
     NgClass,
-    ButtonComponent
+    ButtonComponent,
+    TranslateModule
   ],
   templateUrl: './login.component.html',
 })
@@ -21,10 +24,12 @@ export class LoginComponent extends ViewComponent {
 
   private readonly _authProxy = inject(AuthProxy);
 
+  languageService = inject(LanguageService);
+
   busy = signal(false);
   fields = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.pattern(StrongPasswordRegx)]),
+    email: new FormControl('jhonatan@gmail.com', [Validators.required, Validators.email]),
+    password: new FormControl('Jhonatan123@.', [Validators.required, Validators.pattern(StrongPasswordRegx)]),
   });
 
   onLogin(): void {
@@ -41,7 +46,6 @@ export class LoginComponent extends ViewComponent {
       ).subscribe({
         next: (response) => {
           this.session.user.set(response.data.user);
-          this.session.setTokens(response.data.token, response.data.refreshToken);
           this.navigation.forward('/tasks');
         },
         error: (err) => {

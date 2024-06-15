@@ -6,7 +6,7 @@ export const authGuard: CanActivateFn = () => {
   const sessionService = inject(AppSessionService);
   const navigationService = inject(AppNavigationService);
 
-  if (!sessionService.token || !sessionService.user()) {
+  if (!sessionService.user()) {
     return true;
   }
 

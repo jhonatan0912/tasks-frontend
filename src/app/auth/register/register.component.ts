@@ -35,7 +35,6 @@ export class RegisterComponent extends ViewComponent {
     ).subscribe({
       next: (response) => {
         this.session.user.set(response.data.user);
-        this.session.setTokens(response.data.token, response.data.refreshToken);
         this.navigation.forward('/tasks');
       }
     });

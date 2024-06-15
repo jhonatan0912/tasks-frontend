@@ -2,28 +2,42 @@
   class="fixed top-0 left-0 w-full p-4 bg-white shadow-md">
   <nav class=" max-w-[1440px] mx-auto w-full flex justify-between">
     <h1 class="text-2xl font-bold select-none">
-      Tasks App
+      {{ 'app.title' | translate }}
     </h1>
 
     @if (session.user()) {
-    <div
-      class="relative grid w-8 h-8 text-lg text-white bg-gray-600 rounded-full cursor-pointer place-content-center group">
-      <span class="font-bold">
-        {{ profileIcon }}
-      </span>
+    <section
+      class="flex items-center gap-2">
 
-      <article
-        class="absolute right-0 items-center hidden px-3 p-2 bg-gray-200 rounded-lg shadow-2xl top-8 group-hover:flex min-w-[150px] min-h-[50px]">
-        <span (click)="onLogout()"
-          class="flex items-center gap-2 text-sm font-semibold text-red-600 select-none">
-          <img
-            class="w-4 h-4"
-            src="/assets/icons/logout.svg"
-            alt="Logout Icon">
-          Logout
+      <div
+        (click)="languageService.onLanguage()"
+        class="p-2 font-medium uppercase cursor-pointer select-none hover:bg-gray-200 hover:rounded-md">
+        {{ languageService.currentLanguage }}
+      </div>
+
+      <div
+        class="relative grid w-8 h-8 text-lg text-white bg-gray-600 rounded-full cursor-pointer place-content-center group">
+        @if(busy()){
+        <span class="spinner s-18"></span>
+        }@else{
+        <span class="font-bold">
+          {{ profileIcon }}
         </span>
-      </article>
-    </div>
+        }
+
+        <article
+          class="absolute bg-white right-0 items-center hidden px-3 p-2 rounded-lg shadow-2xl top-8 group-hover:flex min-w-[150px] min-h-[50px]">
+          <span (click)="onLogout()"
+            class="flex items-center gap-2 text-sm font-semibold text-red-600 select-none">
+            <img
+              class="w-4 h-4"
+              src="/assets/icons/logout.svg"
+              alt="Logout Icon">
+            Logout
+          </span>
+        </article>
+      </div>
+    </section>
     }
   </nav>
 </header>

@@ -2,6 +2,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { Injectable, PLATFORM_ID, inject, signal } from '@angular/core';
 import { AUTH_TOKEN, REFRESH_TOKEN } from '@core/constants';
 import { AuthResponseUserDto, SessionDto } from '@core/proxies';
+import { CookieService } from 'ngx-cookie';
 
 type UserSessionType = AuthResponseUserDto | SessionDto;
 
@@ -11,36 +12,23 @@ type UserSessionType = AuthResponseUserDto | SessionDto;
 export class AppSessionService {
 
   private readonly _platformId = inject(PLATFORM_ID);
+  private readonly _cookieService = inject(CookieService);
 
   user = signal<UserSessionType | undefined>(undefined);
 
-  get token(): string | null {
-    if (!isPlatformBrowser(this._platformId)) return null;
+  get token(): string | undefined {
+    if (!isPlatformBrowser(this._platformId)) return undefined;
 
-    return localStorage.getItem(AUTH_TOKEN);
+    return this._cookieService.get(AUTH_TOKEN);
   }
 
-  get refreshToken(): string | null {
-    if (!isPlatformBrowser(this._platformId)) return null;
+  get refreshToken(): string | undefined {
+    if (!isPlatformBrowser(this._platformId)) return undefined;
 
-    return localStorage.getItem(REFRESH_TOKEN);
+    return this._cookieService.get(REFRESH_TOKEN);
   }
 
-  setTokens(token: string, refreshToken: string): void {
-    if (!isPlatformBrowser(this._platformId)) return;
-
-    localStorage.setItem(AUTH_TOKEN, token);
-    localStorage.setItem(REFRESH_TOKEN, refreshToken);
-  }
-
-  logout(): Promise<void> {
-    if (!isPlatformBrowser(this._platformId)) return Promise.resolve();
-
-    return new Promise<void>(resolve => {
-      localStorage.removeItem(AUTH_TOKEN);
-      localStorage.removeItem(REFRESH_TOKEN);
-      this.user.set(undefined);
-      resolve();
-    });
+  clearUser(): void {
+    this.user.set(undefined);
   }
 }

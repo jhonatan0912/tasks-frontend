@@ -41,6 +41,13 @@ export class AuthProxy {
     );
   }
 
+  logout(): Observable<void> {
+    const url = `${this.path}/logout`;
+    const body = {};
+
+    return this._http.post(url, body);
+  }
+
   getSession(): Observable<Response<SessionDto>> {
     const url = `${this.path}/session`;
 

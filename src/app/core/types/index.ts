@@ -72,3 +72,9 @@ export class PaginatedMetaResponse {
     return result;
   }
 }
+
+export enum Language {
+  EN = 'en',
+  ES = 'es'
+}
+export const DEFAULT_LANGUAGE = 'en';
