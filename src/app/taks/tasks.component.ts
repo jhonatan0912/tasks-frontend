@@ -9,7 +9,11 @@ import { TaskFormComponent } from './components/task-form/task-form.component';
 @Component({
   selector: 'app-tasks',
   standalone: true,
-  imports: [TasksHeaderComponent, TaskComponent, TaskFormComponent],
+  imports: [
+    TasksHeaderComponent,
+    TaskComponent,
+    TaskFormComponent
+  ],
   templateUrl: './tasks.component.html',
 })
 export class TasksComponent implements OnInit {

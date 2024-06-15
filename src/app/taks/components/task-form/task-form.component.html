@@ -26,14 +26,14 @@
     <button
       class="w-full p-2 mt-2 border rounded-lg focus:outline-none focus:ring-2"
       type="submit"
-      (click)="onCancel()">
+      (click)="handleCancel($event)">
       Cancel
     </button>
     <button
       class="w-full p-2 mt-2 text-white bg-blue-500 border border-blue-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
       type="submit"
       (click)="onSubmit()">
-      Add Task
+      {{ task.id ? 'Edit Task' : 'Add Task' }}
     </button>
   </div>
 </section>

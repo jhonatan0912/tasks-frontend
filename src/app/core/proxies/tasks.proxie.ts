@@ -37,7 +37,7 @@ export class TasksProxy {
 }
 
 export class TaskDto {
-  id!: number;
+  id?: string;
   title!: string;
   description!: string;
   createdAt!: string;

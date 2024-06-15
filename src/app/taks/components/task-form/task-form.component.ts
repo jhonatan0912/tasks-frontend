@@ -3,6 +3,11 @@ import { FormsModule } from '@angular/forms';
 import { TaskDto, TasksProxy } from '@core/proxies/tasks.proxie';
 
 type FormState = 'hidden' | 'visible';
+interface TaskForm {
+  id?: string | undefined;
+  title: string;
+  description: string;
+}
 
 @Component({
   selector: 'app-task-form',
@@ -15,9 +20,11 @@ export class TaskFormComponent {
   private readonly _tasksProxy = inject(TasksProxy);
 
   onTask = output<TaskDto>();
+  onCancel = output<Event>();
 
   status: FormState = 'hidden';
-  task = {
+  task: TaskForm = {
+    id: '',
     title: '',
     description: ''
   };
@@ -43,12 +50,14 @@ export class TaskFormComponent {
     });
   }
 
-  onCancel(): void {
+  handleCancel(event: Event): void {
     this.onToggleStatus();
+    this.onCancel.emit(event);
   }
 
   onResetFields(): void {
     this.task = {
+      id: '',
       title: '',
       description: ''
     };
