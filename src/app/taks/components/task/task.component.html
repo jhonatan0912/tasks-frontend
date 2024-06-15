@@ -1,5 +1,8 @@
 @if(edit()){
-<app-task-form #form (onCancel)="onCancel($event)"/>
+<app-task-form
+  #form
+  (onCancel)="onCancel($event)"
+  (onDone)="onDone($event)" />
 }@else {
 <article
   class="task select-none active:scale-95 flex cursor-pointer flex-col gap-2 border-t-4 shadow-lg p-2 py-2 rounded-lg {{ task().done ? ' border-t-green-500' : 'border-t-red-500' }}">

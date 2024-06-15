@@ -34,6 +34,18 @@ export class TasksProxy {
 
     return this._http.get(url).pipe(mergeMap((response: any) => of(new PaginatedResponse<TaskDto>().fromJS(response))));
   }
+
+  update(id: string, title: string, description: string, done: boolean): Observable<Response<TaskDto>> {
+    const url = `${this.path}/${id}`;
+
+    const body = {
+      title,
+      description,
+      done
+    };
+
+    return this._http.update(url, body).pipe(mergeMap((response: any) => of(new Response<TaskDto>().fromJS(response))));
+  }
 }
 
 export class TaskDto {

@@ -22,10 +22,13 @@ export class TaskComponent {
   edit = signal(false);
 
   onCancel(event: Event): void {
-    event.preventDefault();
     event.stopPropagation();
 
     this.edit.set(false);
+  }
+
+  onDone(done: boolean): void {
+    this.task().done = done;
   }
 
   @HostListener('click')
@@ -34,7 +37,7 @@ export class TaskComponent {
     console.log(this.form());
     setTimeout(() => {
       this.form()!.status = 'visible';
-      const { done, createdAt, ...rest } = this.task();
+      const { createdAt, ...rest } = this.task();
       this.form()!.task = rest;
     }, 100);
   }

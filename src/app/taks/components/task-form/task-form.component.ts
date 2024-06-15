@@ -21,9 +21,10 @@ export class TaskFormComponent {
 
   onTask = output<TaskDto>();
   onCancel = output<Event>();
+  onDone = output<boolean>();
 
   status: FormState = 'hidden';
-  task: TaskForm = {
+  task: Partial<TaskDto> = {
     id: '',
     title: '',
     description: ''
@@ -35,9 +36,19 @@ export class TaskFormComponent {
       : this.status = 'hidden';
   }
 
-  onSubmit(): void {
+  onSubmit(event: Event): void {
+    event.stopPropagation();
+
     const { title, description } = this.task;
 
+    if (this.task.id) {
+      this.onUpdate(event, this.task.id, title!, description!, !this.task.done!);
+    } else {
+      this.onCreate(title!, description!);
+    }
+  }
+
+  onCreate(title: string, description: string): void {
     this._tasksProxy.create(
       title,
       description
@@ -46,6 +57,22 @@ export class TaskFormComponent {
         this.onTask.emit(response.data);
         this.onResetFields();
         this.onToggleStatus();
+      }
+    });
+  }
+
+  onUpdate(event: Event, id: string, title: string, description: string, done: boolean): void {
+    this._tasksProxy.update(
+      id,
+      title,
+      description,
+      done
+    ).subscribe({
+      next: (response) => {
+        this.task = response.data;
+        this.onToggleStatus();
+        this.onCancel.emit(event);
+        this.onDone.emit(response.data.done);
       }
     });
   }
