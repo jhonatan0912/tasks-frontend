@@ -31,10 +31,13 @@ export class TaskComponent {
     this.task().done = done;
   }
 
-  @HostListener('click')
-  onClick(): void {
+  @HostListener('click', ['$event'])
+  onClick(e: Event): void {
+    if (this.edit()) return;
+    e.preventDefault();
+    e.stopPropagation();
+
     this.edit.set(true);
-    console.log(this.form());
     setTimeout(() => {
       this.form()!.status = 'visible';
       const { createdAt, ...rest } = this.task();

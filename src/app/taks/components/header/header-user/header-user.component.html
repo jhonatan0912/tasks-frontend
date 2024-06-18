@@ -1,0 +1,20 @@
+<section class="flex gap-4">
+  @if(busy()){
+  <span class="spinner s-18"></span>
+  }@else{
+  <div
+    class="relative grid w-8 h-8 text-lg text-white bg-gray-600 rounded-full cursor-pointer place-content-center group">
+    <span class="font-bold">
+      {{ profileIcon() }}
+    </span>
+  </div>
+  }
+  <span (click)="onLogout.emit()"
+    class="flex items-center gap-2 text-sm font-semibold text-red-600 cursor-pointer select-none">
+    <img
+      class="w-4 h-4"
+      src="/assets/icons/logout.svg"
+      alt="Logout Icon">
+  </span>
+
+</section>

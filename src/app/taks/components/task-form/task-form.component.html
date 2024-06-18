@@ -22,6 +22,12 @@
     [(ngModel)]="task.description">
   </textarea>
 
+  @if (task.id) {
+  <div class="flex items-center gap-4">
+    Done: <switch [(checked)]="task.done" />
+  </div>
+  }
+
   <div class="flex flex-col gap-4 tablet:flex-row">
     <button
       class="w-full p-2 mt-2 border rounded-lg focus:outline-none focus:ring-2"

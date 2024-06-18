@@ -1,10 +1,10 @@
-import { Component, OnInit, PLATFORM_ID, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { TaskDto, TasksProxy } from '@core/proxies/tasks.proxie';
 import { PaginatedMetaResponse, PaginatedResponse } from '@core/types';
 import { TasksHeaderComponent } from './components/header/header.component';
-import { TaskComponent } from './components/task/task.component';
-import { isPlatformBrowser } from '@angular/common';
+import { SwitchComponent } from './components/switch/switch.component';
 import { TaskFormComponent } from './components/task-form/task-form.component';
+import { TaskComponent } from './components/task/task.component';
 
 @Component({
   selector: 'app-tasks',
@@ -12,13 +12,13 @@ import { TaskFormComponent } from './components/task-form/task-form.component';
   imports: [
     TasksHeaderComponent,
     TaskComponent,
-    TaskFormComponent
+    TaskFormComponent,
+    SwitchComponent
   ],
   templateUrl: './tasks.component.html',
 })
-export class TasksComponent implements OnInit {
+export class TasksComponent {
 
-  private readonly _platformId = inject(PLATFORM_ID);
   private readonly _tasksProxy = inject(TasksProxy);
 
   tasksReponse = new PaginatedResponse<TaskDto>({
@@ -31,8 +31,7 @@ export class TasksComponent implements OnInit {
     })
   });
 
-  ngOnInit(): void {
-    if (!isPlatformBrowser(this._platformId)) return;
+  constructor() {
     this.onGetTasks();
   }
 

@@ -1,6 +1,7 @@
 import { Component, inject, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TaskDto, TasksProxy } from '@core/proxies/tasks.proxie';
+import { SwitchComponent } from '../switch/switch.component';
 
 type FormState = 'hidden' | 'visible';
 interface TaskForm {
@@ -12,7 +13,10 @@ interface TaskForm {
 @Component({
   selector: 'app-task-form',
   standalone: true,
-  imports: [FormsModule],
+  imports: [
+    FormsModule,
+    SwitchComponent
+  ],
   templateUrl: './task-form.component.html',
 })
 export class TaskFormComponent {
@@ -42,7 +46,7 @@ export class TaskFormComponent {
     const { title, description } = this.task;
 
     if (this.task.id) {
-      this.onUpdate(event, this.task.id, title!, description!, !this.task.done!);
+      this.onUpdate(event, this.task.id, title!, description!, this.task.done!);
     } else {
       this.onCreate(title!, description!);
     }

@@ -4,12 +4,14 @@ import { AuthProxy } from '@core/proxies';
 import { LanguageService } from '@core/services';
 import { TranslateModule } from '@ngx-translate/core';
 import { finalize } from 'rxjs';
+import { HeaderUserComponent } from './header-user/header-user.component';
 
 @Component({
   selector: 'tasks-header',
   standalone: true,
   imports: [
-    TranslateModule
+    TranslateModule,
+    HeaderUserComponent
   ],
   templateUrl: './header.component.html',
 })
@@ -31,7 +33,7 @@ export class TasksHeaderComponent extends ViewComponent {
     this.busy.set(true);
 
     this._authProxy.logout()
-      .pipe(finalize(()=>this.busy.set(false)))
+      .pipe(finalize(() => this.busy.set(false)))
       .subscribe({
         next: () => {
           this.session.clearUser();

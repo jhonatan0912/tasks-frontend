@@ -15,28 +15,10 @@
         {{ languageService.currentLanguage }}
       </div>
 
-      <div
-        class="relative grid w-8 h-8 text-lg text-white bg-gray-600 rounded-full cursor-pointer place-content-center group">
-        @if(busy()){
-        <span class="spinner s-18"></span>
-        }@else{
-        <span class="font-bold">
-          {{ profileIcon }}
-        </span>
-        }
-
-        <article
-          class="absolute bg-white right-0 items-center hidden px-3 p-2 rounded-lg shadow-2xl top-8 group-hover:flex min-w-[150px] min-h-[50px]">
-          <span (click)="onLogout()"
-            class="flex items-center gap-2 text-sm font-semibold text-red-600 select-none">
-            <img
-              class="w-4 h-4"
-              src="/assets/icons/logout.svg"
-              alt="Logout Icon">
-            Logout
-          </span>
-        </article>
-      </div>
+      <header-user
+        (onLogout)="onLogout()"
+        [(busy)]="busy"
+        [profileIcon]="profileIcon" />
     </section>
     }
   </nav>
