@@ -19,7 +19,6 @@ const getSession = (injector: Injector): void => {
 };
 
 export const appInitializer = (injector: Injector) => {
-  const sessionService = injector.get(AppSessionService);
   const languageService = injector.get(LanguageService);
 
   return () => {

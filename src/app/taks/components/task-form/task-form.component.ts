@@ -1,21 +1,18 @@
 import { Component, inject, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TaskDto, TasksProxy } from '@core/proxies/tasks.proxie';
+import { TranslateModule } from '@ngx-translate/core';
 import { SwitchComponent } from '../switch/switch.component';
 
 type FormState = 'hidden' | 'visible';
-interface TaskForm {
-  id?: string | undefined;
-  title: string;
-  description: string;
-}
 
 @Component({
   selector: 'app-task-form',
   standalone: true,
   imports: [
     FormsModule,
-    SwitchComponent
+    SwitchComponent,
+    TranslateModule
   ],
   templateUrl: './task-form.component.html',
 })
